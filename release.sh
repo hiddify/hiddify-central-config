@@ -4,7 +4,7 @@ which gitchangelog
 if [[ "$?" != 0 ]];then
     pip3 install gitchangelog
 fi
-previous_tag=$(git tag --sort=-creatordate | sed -n 2p)
+previous_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
 echo "previous version was $previous_tag"
 read -p "Version? (provide the next x.y.z semver) : " TAG
 echo "${TAG}" > VERSION
