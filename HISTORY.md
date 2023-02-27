@@ -5,6 +5,8 @@
 
 ### Fix
 
+* Release message. [hiddify]
+
 * Typo. [hiddify]
 
 
