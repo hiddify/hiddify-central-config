@@ -14,12 +14,15 @@ function main(){
         pip3 install -U hiddifypanel
     fi
 
-    LAST_CONFIG_VERSION=$(lastversion hiddify/hiddify-central-config/)
+    LAST_CONFIG_VERSION=$(lastversion hiddify/hiddify-central-config)
     CURRENT_CONFIG_VERSION=$(cat VERSION)
     echo "Current Config Version=$CURRENT_CONFIG_VERSION -- Latest=$LAST_CONFIG_VERSION"
     if [[ "$CURRENT_CONFIG_VERSION" != "$LAST_CONFIG_VERSION" ]];then
-        echo "Config is outdated! update it."
-        # bash install.sh
+        echo "Config is outdated! updating..."
+        wget -c $(lastversion hiddify/hiddify-central-config --source)
+        tar xvzf hiddify-central-config-v$LAST_CONFIG_VERSION.tag.gz --strip-components=1
+        rm hiddify-central-config-v$LAST_CONFIG_VERSION.tag.gz
+        bash install.sh
     fi
 
     if [[ "$CURRENT" != "$LATEST" ]];then
