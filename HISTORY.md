@@ -5,6 +5,13 @@
 
 ### Fix
 
+* Typo. [hiddify]
+
+
+## v0.1.7 (2023-02-27)
+
+### Fix
+
 * Test before release. [hiddify]
 
 
