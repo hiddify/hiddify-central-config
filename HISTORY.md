@@ -3,6 +3,13 @@
 
 ## (unreleased)
 
+### Fix
+
+* Test before release. [hiddify]
+
+
+## v0.1.6 (2023-02-27)
+
 ### New
 
 * Output the change log in markdown format. [hiddify]
