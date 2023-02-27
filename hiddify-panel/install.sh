@@ -2,7 +2,7 @@
 systemctl kill hiddify-admin.service
 systemctl disable hiddify-admin.service
 
-for req in pip3 gunicorn;do
+for req in pip3 gunicorn python3 hiddifypanel lastversion;do
     which $req
     if [[ "$?" != 0 ]];then
             apt update
@@ -13,14 +13,7 @@ for req in pip3 gunicorn;do
     fi
 done
 
-CURRENT=`pip3 freeze |grep hiddifypanel|awk -F"==" '{ print $2 }'`
-LATEST=`lastversion hiddifypanel --at pip`
 
-echo "hiddify panel version current=$CURRENT latest=$LATEST"
-
-if [[ "$CURRENT" != "$LATEST" ]];then
-    pip3 install -U hiddifypanel lastversion
-fi
 
 ln -sf $(which gunicorn) /usr/bin/gunicorn
 

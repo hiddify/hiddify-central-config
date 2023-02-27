@@ -4,22 +4,24 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 cd $( dirname -- "$0"; )
  
 function main(){
-    git branch
-    changed=0
-    git pull --dry-run 2>&1 | grep -q -v 'Already up-to-date.' && changed=1
+    CURRENT=`pip3 freeze |grep hiddifypanel|awk -F"==" '{ print $2 }'`
+    LATEST=`lastversion hiddifypanel --at pip`
 
-    (cd  hiddify-panel; bash install.sh)
+    echo "hiddify panel version current=$CURRENT latest=$LATEST"
 
-    if [[ "$changed" == "1" ]];then
-        echo "Updating system"
-        
-        # rm hiddify-panel/hiddify-panel.service&&git checkout hiddify-central-panel/hiddify-panel.service 
-        
-        git pull
-        bash install.sh
-    else 
-        echo "No update is needed"
+    if [[ "$CURRENT" != "$LATEST" ]];then
+        echo "panel is outdated! updating...."
+        pip3 install -U hiddifypanel
     fi
+
+    LAST_CONFIG_VERSION=$(lastversion hiddify/hiddify-central-config/)
+    CURRENT_CONFIG_VERSION=$(cat VERSION)
+    echo "Current Config Version=$CURRENT_CONFIG_VERSION -- Latest=$LAST_CONFIG_VERSION"
+    if [[ "$CURRENT_CONFIG_VERSION" != "$LAST_CONFIG_VERSION" ]];then
+        echo "Config is outdated! update it."
+        # bash install.sh
+    fi
+
     if [[ "$CURRENT" != "$LATEST" ]];then
         systemctl restart hiddify-central-panel
     fi

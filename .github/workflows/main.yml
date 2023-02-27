@@ -24,8 +24,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install project
-        env:
-          SQLALCHEMY_DATABASE_URI: sqlite:////opt/hiddify-central-config/hiddify-panel/database.db
         run: |
           sudo mkdir /opt/hiddify-central-config
           sudo cp -r * /opt/hiddify-central-config/
