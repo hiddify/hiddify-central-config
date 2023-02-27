@@ -1,0 +1,5 @@
+[default]
+DEBUG = false
+SECRET_KEY = "Pl3453Ch4ng3"
+HIDDIFY_CONFIG_PATH="/opt/hiddify-central-config/"
+SQLALCHEMY_DATABASE_URI = 'sqlite:////opt/hiddify-central-config/hiddify-panel/database.db'
