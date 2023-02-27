@@ -47,7 +47,11 @@ function set_config_from_hpanel(){
         MAIN_DOMAIN=
         for i in $(seq 0 ``domains.length()``); do
                 domain=$(get domains $i domain)
-                MAIN_DOMAIN="$domain;$MAIN_DOMAIN"
+                if [ "" == "$MAIN_DOMAIN" ];then
+                    MAIN_DOMAIN="$domain"
+                elif [ "" != "$domain" ];then
+                    MAIN_DOMAIN="$domain;$MAIN_DOMAIN"
+                fi
         done
 
         setenv MAIN_DOMAIN $MAIN_DOMAIN
