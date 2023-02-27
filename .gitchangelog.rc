@@ -1,0 +1,3 @@
+output_engine = mustache("markdown")
+
+tag_filter_regexp = r'^v[0-9]+\.[0-9]+(\.[0-9]+)?$'

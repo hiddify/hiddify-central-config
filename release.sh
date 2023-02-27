@@ -2,7 +2,7 @@
 
 which gitchangelog
 if [[ "$?" != 0 ]];then
-    pip3 install gitchangelog
+    pip3 install gitchangelog pystache
 fi
 previous_tag=$(git describe --tags $(git rev-list --tags --max-count=1))
 echo "previous version was $previous_tag"
