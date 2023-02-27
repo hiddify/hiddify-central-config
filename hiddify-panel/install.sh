@@ -23,7 +23,7 @@ if [[ "$CURRENT" != "$LATEST" ]];then
 fi
 
 ln -sf $(which gunicorn) /usr/bin/gunicorn
-echo "Current dir is $(pwd)"
+
 
 python3 -m hiddifypanel init-db
 python3 -m hiddifypanel set-setting -k is_parent -v True
