@@ -15,7 +15,7 @@ on:
 permissions:
   contents: write
 jobs:
-  check-installable:
+  test:
     strategy:
       fail-fast: true
       matrix:

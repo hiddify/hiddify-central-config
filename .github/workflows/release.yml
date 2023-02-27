@@ -1,10 +1,14 @@
 name: Create Release
 
 on:
-  push:
-    # Sequence of patterns matched against refs/tags
-    tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+  workflow_run:
+    workflows: ["CI"]
+    types: 
+      - completed
+  # push:
+  #   # Sequence of patterns matched against refs/tags
+  #   tags:
+  #     - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -12,6 +16,7 @@ permissions:
   contents: write
 jobs:
   release:
+    if: github.event_name == 'push' && contains(github.event.ref, '/tags/v')
     name: Create Release
     runs-on: ubuntu-latest
     steps:
