@@ -4,6 +4,8 @@ Changelog
 
 (unreleased)
 ------------
+- Fix release message bug. [hiddify]
+- Fix version not added in release. [hiddify]
 - Fix old release display. [hiddify]
 - Fix tag. [hiddify]
 
