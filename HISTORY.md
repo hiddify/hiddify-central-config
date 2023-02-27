@@ -4,6 +4,8 @@ Changelog
 
 (unreleased)
 ------------
+- Release only if ci is success. [hiddify]
+- Release: version 0.1.2 🚀 [hiddify]
 - Fix release message bug. [hiddify]
 - Fix version not added in release. [hiddify]
 - Fix old release display. [hiddify]
