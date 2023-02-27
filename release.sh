@@ -9,7 +9,7 @@ echo "previous version was $previous_tag"
 read -p "Version? (provide the next x.y.z semver) : " TAG
 echo "${TAG}" > VERSION
 gitchangelog > HISTORY.md
-git add hiddifypanel/VERSION HISTORY.md
+git add VERSION HISTORY.md
 git commit -m "release: version ${TAG} 🚀"
 echo "creating git tag : v${TAG}"
 git tag v${TAG}

@@ -4,6 +4,12 @@ Changelog
 
 (unreleased)
 ------------
+- Fix old release display. [hiddify]
+- Fix tag. [hiddify]
+
+
+0.1.0 (2023-02-27)
+------------------
 - Add release. [hiddify]
 - Add release. [hiddify]
 - Fix typo. [hiddify]
