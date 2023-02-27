@@ -16,7 +16,7 @@ permissions:
   contents: write
 jobs:
   release:
-    if: github.event_name == 'push' && contains(github.event.ref, '/tags/v')
+    if: contains(github.event.ref, '/tags/v')
     name: Create Release
     runs-on: ubuntu-latest
     steps:
