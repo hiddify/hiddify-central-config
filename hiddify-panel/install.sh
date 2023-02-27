@@ -8,22 +8,22 @@ for req in pip3 gunicorn;do
             apt update
             apt install -y python3-pip gunicorn
             pip3 install pip
-            pip3 install -U hiddifypanel
+            pip3 install -U hiddifypanel lastversion
             break
     fi
 done
 
 CURRENT=`pip3 freeze |grep hiddifypanel|awk -F"==" '{ print $2 }'`
-LATEST=`lastversion hiddifypanel --at pip'`
+LATEST=`lastversion hiddifypanel --at pip`
 
 echo "hiddify panel version current=$CURRENT latest=$LATEST"
 
 if [[ "$CURRENT" != "$LATEST" ]];then
-    pip3 install -U hiddifypanel
+    pip3 install -U hiddifypanel lastversion
 fi
 
 ln -sf $(which gunicorn) /usr/bin/gunicorn
-
+echo "Current dir is $(pwd)"
 python3 -m hiddifypanel init-db
 python3 -m hiddifypanel set-setting -k is_parent -v True
 
