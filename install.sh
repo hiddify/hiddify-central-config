@@ -94,6 +94,7 @@ function check_installation_ok(){
 
 function main(){
         export MODE="$1"
+        export SQLALCHEMY_DATABASE_URI='sqlite:////opt/hiddify-central-config/hiddify-panel/database.db'
         runsh install.sh hiddify-panel
         set_config_from_hpanel
         if [[ $DB_VERSION == "" ]];then
