@@ -11,7 +11,7 @@ GITHUB_BRANCH_OR_TAG=main
 
 if [ ! -d "/opt/$GITHUB_REPOSITORY" ];then
         apt update
-        apt upgrade
+        apt upgrade -y
         apt install -y git
         git clone https://github.com/$GITHUB_USER/$GITHUB_REPOSITORY/  /opt/$GITHUB_REPOSITORY
         cd /opt/$GITHUB_REPOSITORY
