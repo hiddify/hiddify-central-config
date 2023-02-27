@@ -24,8 +24,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install project
-        run: bash install.sh
+        run: |
+          sudo mkdir /opt/hiddify-central-config
+          sudo cp -r * /opt/hiddify-central-config/
+          cd /opt/hiddify-central-config/
+          sudo bash install.sh
       - name: check working
         run: |
+          cd /opt/hiddify-central-config/
           grep -q '-----Finished!-----' log/system/0-install.log 
           cd hiddify-panel;hiddifypanel all-configs
