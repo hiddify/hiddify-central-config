@@ -9,7 +9,9 @@ echo "previous version was $previous_tag"
 read -p "Version? (provide the next x.y.z semver) : " TAG
 [[ $TAG = v* ]] && echo "incorrect tag" && exit 1
 echo "${TAG}" > VERSION
+git tag v${TAG}
 gitchangelog > HISTORY.md
+git tag -d v${TAG}
 git add VERSION HISTORY.md
 git commit -m "release: version ${TAG} 🚀"
 echo "creating git tag : v${TAG}"
