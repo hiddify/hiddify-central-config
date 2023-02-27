@@ -16,6 +16,7 @@ permissions:
   contents: write
 jobs:
   test:
+    id: test
     strategy:
       fail-fast: true
       matrix:
