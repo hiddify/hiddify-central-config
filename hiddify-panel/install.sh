@@ -16,7 +16,7 @@ done
 CURRENT=`pip index versions hiddifypanel|grep INSTALLED|awk -F": " '{ print $2 }'`
 LATEST=`pip index versions hiddifypanel|grep LATEST|awk -F": " '{ print $2 }'`
 
-if [[ "$CURRENT" != "$LATEST"]];then
+if [[ "$CURRENT" != "$LATEST" ]];then
     pip3 install -U hiddifypanel
 fi
 
