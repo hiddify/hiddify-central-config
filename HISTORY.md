@@ -1,6 +1,13 @@
 # Changelog
 
 
+## v0.2.2 (2023-02-27)
+
+### Fix
+
+* Remove empty domains. [hiddify]
+
+
 ## v0.2.1 (2023-02-27)
 
 ### New
