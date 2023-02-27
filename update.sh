@@ -20,8 +20,8 @@ function main(){
     if [[ "$CURRENT_CONFIG_VERSION" != "$LAST_CONFIG_VERSION" ]];then
         echo "Config is outdated! updating..."
         wget -c $(lastversion hiddify/hiddify-central-config --source)
-        tar xvzf hiddify-central-config-v$LAST_CONFIG_VERSION.tag.gz --strip-components=1
-        rm hiddify-central-config-v$LAST_CONFIG_VERSION.tag.gz
+        tar xvzf hiddify-central-config-v$LAST_CONFIG_VERSION.tar.gz --strip-components=1
+        rm hiddify-central-config-v$LAST_CONFIG_VERSION.tar.gz
         bash install.sh
     fi
 
