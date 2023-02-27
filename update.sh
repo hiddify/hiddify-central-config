@@ -8,18 +8,12 @@ function main(){
     changed=0
     git pull --dry-run 2>&1 | grep -q -v 'Already up-to-date.' && changed=1
 
-    # pip uninstall -y hiddifypanel 
-    # pip --disable-pip-version-check install -q -U git+https://github.com/hiddify/HiddifyPanel
-    CURRENT=`pip index versions hiddifypanel|grep INSTALLED|awk -F": " '{ print $2 }'`
-    LATEST=`pip index versions hiddifypanel|grep LATEST|awk -F": " '{ print $2 }'`
+    (cd  hiddify-panel; bash install.sh)
 
-    if [[ "$CURRENT" != "$LATEST" ]];then
-        pip3 install -U hiddifypanel
-    fi
     if [[ "$changed" == "1" ]];then
         echo "Updating system"
         
-        # rm hiddify-panel/hiddify-panel.service&&git checkout hiddify-panel/hiddify-panel.service 
+        # rm hiddify-panel/hiddify-panel.service&&git checkout hiddify-central-panel/hiddify-panel.service 
         
         git pull
         bash install.sh
@@ -27,7 +21,7 @@ function main(){
         echo "No update is needed"
     fi
     if [[ "$CURRENT" != "$LATEST" ]];then
-        systemctl restart hiddify-panel
+        systemctl restart hiddify-central-panel
     fi
 }
 

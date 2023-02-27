@@ -80,13 +80,24 @@ function do_for_all() {
         runsh $1.sh caddy
 }
 
+function check_installation_ok(){
+    for s in caddy hiddify-central-panel;do
+        if [[ "$(systemctl is-active $s)" != "active" ]];then
+            sleep 5
+            if [[ "$(systemctl is-active $s)" != "active" ]];then
+                >&2 echo "Error! Important Service $s can not be activated"
+                exit 2
+            fi
+        fi
+    done
+}
 
 function main(){
         export MODE="$1"
         runsh install.sh hiddify-panel
         set_config_from_hpanel
         if [[ $DB_VERSION == "" ]];then
-                echo "ERROR!!!! There is an error in the installation of python panel. Exit...."
+                >&2 echo "ERROR!!!! There is an error in the installation of python panel. Exit...."
                 exit 1
         fi
         
@@ -96,22 +107,23 @@ function main(){
         fi
 
         if [[ -z "$DO_NOT_RUN" || "$DO_NOT_RUN" == false ]];then
-                do_for_all run
-                
-                echo ""
-                echo ""
-                bash status.sh
-                echo "==========================================================="
-                echo "Finished! Thank you for helping Iranians to skip filternet."
-                echo "Please open the following link in the browser for client setup"
-                
-                echo `cd hiddify-panel;python3 -m hiddifypanel admin-links`
-                
-                echo "---------------------Finished!------------------------"
-        
+                do_for_all run       
         fi
 
-        systemctl restart hiddify-panel
+        check_installation_ok
+
+        echo ""
+        echo ""
+        bash status.sh
+        echo "==========================================================="
+        echo "Finished! Thank you for helping Iranians to skip filternet."
+        echo "Please open the following link in the browser for client setup"
+        
+        echo `cd hiddify-panel;python3 -m hiddifypanel admin-links`
+        
+        echo "---------------------Finished!------------------------"
+
+        systemctl restart hiddify-central-panel
 }
 
 mkdir -p log/system/

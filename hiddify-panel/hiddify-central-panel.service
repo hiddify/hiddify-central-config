@@ -1,5 +1,5 @@
 [Unit]
-Description=hiddify admin ui
+Description=hiddify central panel
 After=network-online.target
 Wants=network-online.target
 
