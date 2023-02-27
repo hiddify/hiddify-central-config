@@ -1,7 +1,18 @@
 # Changelog
 
 
-## (unreleased)
+## v0.2.1 (2023-02-27)
+
+### New
+
+* Download latest release version only. [hiddify]
+
+### Fix
+
+* History not shown correctly. [hiddify]
+
+
+## v0.2.0 (2023-02-27)
 
 ### Fix
 
