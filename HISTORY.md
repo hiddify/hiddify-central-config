@@ -4,6 +4,8 @@ Changelog
 
 (unreleased)
 ------------
+- Add automatic update base on release. [hiddify]
+- Release: version 0.1.4 🚀 [hiddify]
 - Fix bug in github action. [hiddify]
 - Release: version 0.1.3 🚀 [hiddify]
 - Release only if ci is success. [hiddify]
