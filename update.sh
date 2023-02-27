@@ -10,11 +10,12 @@ function main(){
 
     # pip uninstall -y hiddifypanel 
     # pip --disable-pip-version-check install -q -U git+https://github.com/hiddify/HiddifyPanel
-    CURRENT=pip index versions hiddifypanel|grep INSTALLED|awk -F": " '{ print $2 }'
-    LATEST=pip index versions hiddifypanel|grep LATEST|awk -F": " '{ print $2 }'
+    CURRENT=`pip index versions hiddifypanel|grep INSTALLED|awk -F": " '{ print $2 }'`
+    LATEST=`pip index versions hiddifypanel|grep LATEST|awk -F": " '{ print $2 }'`
 
-    pip --disable-pip-version-check install -q -U hiddifypanel
-    
+    if [[ "$CURRENT" != "$LATEST" ]];then
+        pip3 install -U hiddifypanel
+    fi
     if [[ "$changed" == "1" ]];then
         echo "Updating system"
         
@@ -25,7 +26,9 @@ function main(){
     else 
         echo "No update is needed"
     fi
-    systemctl restart hiddify-panel
+    if [[ "$CURRENT" != "$LATEST" ]];then
+        systemctl restart hiddify-panel
+    fi
 }
 
 mkdir -p log/system/
