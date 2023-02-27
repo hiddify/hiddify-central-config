@@ -4,6 +4,8 @@ Changelog
 
 (unreleased)
 ------------
+- Fix bug in github action. [hiddify]
+- Release: version 0.1.3 🚀 [hiddify]
 - Release only if ci is success. [hiddify]
 - Release: version 0.1.2 🚀 [hiddify]
 - Fix release message bug. [hiddify]
