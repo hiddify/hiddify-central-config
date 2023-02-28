@@ -1,6 +1,13 @@
 # Changelog
 
 
+## v0.2.3 (2023-02-28)
+
+### New
+
+* Allow users to connect with IP. [hiddify]
+
+
 ## v0.2.2 (2023-02-27)
 
 ### Fix
