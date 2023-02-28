@@ -1,8 +1,8 @@
 #!/bin/bash
 cd $( dirname -- "$0"; )
 function main(){
-	systemctl status --no-pager **/*.service caddy|cat
-
+	systemctl status --no-pager caddy hiddify-central-panel.service |cat
+    
     for s in caddy **/*.service;do
         s=${s##*/}
         s=${s%%.*}

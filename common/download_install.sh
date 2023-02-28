@@ -22,8 +22,9 @@ if [ ! -d "/opt/$GITHUB_REPOSITORY" ];then
         rm $GITHUB_REPOSITORY-v$LAST_CONFIG_VERSION.tar.gz
         cd /opt/$GITHUB_REPOSITORY
         bash install.sh
-        exit 0
+        # exit 0
 fi 
 
+read -p "Press any key to go  to menu" -n 1 key
 cd /opt/$GITHUB_REPOSITORY
 bash menu.sh
