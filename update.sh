@@ -2,19 +2,14 @@
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 cd $( dirname -- "$0"; )
-export __tick_var_tokenized=0
-. /common/ticktick.sh 
+
 function get_commit_version(){
-    latest=$(curl -s https://api.github.com/repos/hiddify/$1/git/refs/heads/main)
-    tickParse  "$latest"            
-    COMMIT=``object[sha]``
+    COMMIT=$(curl -s https://api.github.com/repos/hiddify/$1/git/refs/heads/main|jq ".object.sha")
     echo ${COMMIT:0:7}
 }
 
 function main(){
-    hiddify=`cd hiddify-panel;python3 -m hiddifypanel all-configs`
-    tickParse  "$hiddify"
-    PACKAGE_MODE=``hconfigs[package_mode]``
+    PACKAGE_MODE=$(cd hiddify-panel;python3 -m hiddifypanel all-configs|jq ".hconfigs.package_mode")
     
     if [[ "$PACKAGE_MODE" == "develop" ]];then
         echo "you are in develop mode"

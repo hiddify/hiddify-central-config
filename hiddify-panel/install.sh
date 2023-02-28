@@ -2,11 +2,11 @@
 systemctl kill hiddify-admin.service
 systemctl disable hiddify-admin.service
 
-for req in pip3 gunicorn python3 hiddifypanel lastversion;do
+for req in pip3 gunicorn python3 hiddifypanel lastversion jq;do
     which $req
     if [[ "$?" != 0 ]];then
             apt update
-            apt install -y python3-pip gunicorn
+            apt install -y python3-pip gunicorn jq
             pip3 install pip
             pip3 install -U hiddifypanel lastversion
             break
