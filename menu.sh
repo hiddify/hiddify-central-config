@@ -7,12 +7,13 @@ BACKTITLE="Welcome to Hiddify Central Panel"
 TITLE="Hiddify Central Panel"
 MENU="Choose one of the following options:"
 
-OPTIONS=(status "View status of system"
+OPTIONS=(admin "Show admin link"
+         status "View status of system"
          apply_configs "Apply the changed configs"
          install "Reinstall"
-         upgrade "Upgrade "
+         update "Update "
          uninstall "Uninstall"
-         admin "Show admin link"
+         
          )
 
 CHOICE=$(dialog --clear \

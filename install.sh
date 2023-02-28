@@ -124,7 +124,7 @@ function main(){
         echo "Finished! Thank you for helping Iranians to skip filternet."
         echo "Please open the following link in the browser for client setup"
         
-        echo `cd hiddify-panel;python3 -m hiddifypanel admin-links`
+        (cd hiddify-panel;python3 -m hiddifypanel admin-links)
         
         echo "---------------------Finished!------------------------"
 
