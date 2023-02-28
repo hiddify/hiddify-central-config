@@ -1,6 +1,17 @@
 # Changelog
 
 
+## v0.2.8 (2023-02-28)
+
+### New
+
+* Add log view via menu. [hiddify]
+
+### Other
+
+* Update menu and update. [hiddify]
+
+
 ## v0.2.7 (2023-02-28)
 
 ### New
