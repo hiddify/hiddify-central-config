@@ -1,6 +1,13 @@
 # Changelog
 
 
+## v0.2.7 (2023-02-28)
+
+### New
+
+* Add release and develop package update. [hiddify]
+
+
 ## v0.2.6 (2023-02-28)
 
 ### New
