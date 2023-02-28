@@ -2,7 +2,8 @@
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 cd $( dirname -- "$0"; )
-./common/ticktick.sh 
+export __tick_var_tokenized=0
+. /common/ticktick.sh 
 function get_commit_version(){
     latest=$(curl -s https://api.github.com/repos/hiddify/$1/git/refs/heads/main)
     tickParse  "$latest"            
