@@ -1,4 +1,17 @@
-%DOMAINS%
+http://, https:// {
+tls{
+    on_demand
+}
+
+reverse_proxy /%PROXY_PATH%/* localhost:9000
+
+reverse_proxy https://%DECOY_DOMAIN% {
+    header_up Host %DECOY_DOMAIN%
+}
+
+}
+
+%DOMAINS% {
 
 # Compress responses according to Accept-Encoding headers
 encode gzip zstd
@@ -7,5 +20,8 @@ encode gzip zstd
 # Send API requests to backend
 reverse_proxy /%PROXY_PATH%/* localhost:9000
 
-reverse_proxy %DECOY_DOMAIN%
+reverse_proxy https://%DECOY_DOMAIN% {
+    header_up Host %DECOY_DOMAIN%
+}
 
+}

@@ -12,6 +12,7 @@ OPTIONS=(status "View status of system"
          install "Reinstall"
          upgrade "Upgrade "
          uninstall "Uninstall"
+         admin "Show admin link"
          )
 
 CHOICE=$(dialog --clear \
@@ -24,4 +25,10 @@ CHOICE=$(dialog --clear \
 
 clear
 
-bash $CHOICE.sh
+if [[ "$CHOICE" == "" ]];then
+    exit
+elif [[ "$CHOICE" == "admin" ]];then
+    (cd hiddify-panel; python3 -m hiddifypanel admin-links)
+else
+    bash $CHOICE.sh
+fi
