@@ -45,8 +45,8 @@ function set_config_from_hpanel(){
         }
 
         MAIN_DOMAIN=
-        for i in $(seq 0 ``domains.length()``); do
-                domain=$(get domains $i domain)
+        for i in $(seq 0 ``parent_domains.length()``); do
+                domain=$(get parent_domains $i domain)
                 if [ "" == "$MAIN_DOMAIN" ];then
                     MAIN_DOMAIN="$domain"
                 elif [ "" != "$domain" ];then
@@ -100,6 +100,7 @@ function main(){
         which hiddifypanel
         if [[ "$?" != 0 ]];then
             echo "/opt/hiddify-central-config/menu.sh">>~/.bashrc
+            echo "cd /opt/hiddify-central-config/">>~/.bashrc
         fi
 
         export MODE="$1"

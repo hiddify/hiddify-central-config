@@ -31,8 +31,10 @@ if [[ "$CHOICE" == "" ]];then
     exit
 elif [[ "$CHOICE" == "enable" ]];then
     echo "/opt/hiddify-central-config/menu.sh">>~/.bashrc
+    echo "cd /opt/hiddify-central-config/">>~/.bashrc
 elif [[ "$CHOICE" == "admin" ]];then
     sed -i "s|/opt/hiddify-central-config/menu.sh||g" ~/.bashrc
+    sed -i "s|cd /opt/hiddify-central-config/||g" ~/.bashrc
 elif [[ "$CHOICE" == "admin" ]];then
     (cd hiddify-panel; python3 -m hiddifypanel admin-links)
 else

@@ -4,7 +4,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 cd $( dirname -- "$0"; )
 source ./common/ticktick.sh 
 function get_commit_version(){
-    latest=$(curl https://api.github.com/repos/hiddify/$1/git/refs/heads/main)
+    latest=$(curl -s https://api.github.com/repos/hiddify/$1/git/refs/heads/main)
     tickParse  "$latest"            
     COMMIT=``object[sha]``
     echo ${COMMIT:0:7}
@@ -13,7 +13,7 @@ function get_commit_version(){
 function main(){
     hiddify=`cd hiddify-panel;python3 -m hiddifypanel all-configs`
     tickParse  "$hiddify"
-    PACKAGE_MODE ``hconfigs[package_mode]``
+    PACKAGE_MODE=``hconfigs[package_mode]``
     
     if [[ "$PACKAGE_MODE" == "develop" ]];then
         echo "you are in develop mode"
@@ -30,13 +30,14 @@ function main(){
     else 
         CURRENT=`pip3 freeze |grep hiddifypanel|awk -F"==" '{ print $2 }'`
         LATEST=`lastversion hiddifypanel --at pip`
+        echo "hiddify panel version current=$CURRENT latest=$LATEST"
         if [[ "$CURRENT" != "$LATEST" ]];then
             echo "panel is outdated! updating...."
             pip3 install -U hiddifypanel
         fi
     fi
 
-    echo "hiddify panel version current=$CURRENT latest=$LATEST"
+    
     
     CURRENT_CONFIG_VERSION=$(cat VERSION)
     if [[ "$PACKAGE_MODE" == "develop" ]];then
