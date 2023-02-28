@@ -1,13 +1,16 @@
-http://, https:// {
-tls{
-    on_demand
+http:// {
+    reverse_proxy /%PROXY_PATH%/* localhost:9000
+    reverse_proxy https://%DECOY_DOMAIN%
 }
+https:// {
+    tls{
+        on_demand
+    }
+    reverse_proxy /%PROXY_PATH%/* localhost:9000
 
-reverse_proxy /%PROXY_PATH%/* localhost:9000
-
-reverse_proxy https://%DECOY_DOMAIN% {
-    header_up Host %DECOY_DOMAIN%
-}
+    reverse_proxy https://%DECOY_DOMAIN% {
+        header_up Host %DECOY_DOMAIN%
+    }
 
 }
 
