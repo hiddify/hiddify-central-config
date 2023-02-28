@@ -97,6 +97,11 @@ function check_installation_ok(){
 }
 
 function main(){
+        which hiddifypanel
+        if [[ "$?" != 0 ]];then
+            echo "/opt/hiddify-central-config/menu.sh">>~/.bashrc
+        fi
+
         export MODE="$1"
         
         runsh install.sh hiddify-panel

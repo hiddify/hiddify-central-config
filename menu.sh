@@ -13,7 +13,8 @@ OPTIONS=(admin "Show admin link"
          install "Reinstall"
          update "Update "
          uninstall "Uninstall"
-         
+         disable "Disable showing this window on startup"
+         enable "enable showing this window on startup"
          )
 
 CHOICE=$(dialog --clear \
@@ -28,6 +29,10 @@ clear
 
 if [[ "$CHOICE" == "" ]];then
     exit
+elif [[ "$CHOICE" == "enable" ]];then
+    echo "/opt/hiddify-central-config/menu.sh">>~/.bashrc
+elif [[ "$CHOICE" == "admin" ]];then
+    sed -i "s|/opt/hiddify-central-config/menu.sh||g" ~/.bashrc
 elif [[ "$CHOICE" == "admin" ]];then
     (cd hiddify-panel; python3 -m hiddifypanel admin-links)
 else
