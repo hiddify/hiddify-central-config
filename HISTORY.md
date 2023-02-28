@@ -1,6 +1,13 @@
 # Changelog
 
 
+## v0.2.6 (2023-02-28)
+
+### New
+
+* Show menu on startup (users can disable it after) [hiddify]
+
+
 ## v0.2.5 (2023-02-28)
 
 ### New
