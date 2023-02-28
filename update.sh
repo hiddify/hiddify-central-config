@@ -2,7 +2,7 @@
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 cd $( dirname -- "$0"; )
-source ./common/ticktick.sh 
+./common/ticktick.sh 
 function get_commit_version(){
     latest=$(curl -s https://api.github.com/repos/hiddify/$1/git/refs/heads/main)
     tickParse  "$latest"            
@@ -45,8 +45,8 @@ function main(){
         echo "DEVELOP: Current Config Version=$CURRENT_CONFIG_VERSION -- Latest=$LAST_CONFIG_VERSION"
         if [[ "$CURRENT_CONFIG_VERSION" != "$LAST_CONFIG_VERSION" ]];then
             wget -c https://github.com/hiddify/hiddify-central-config/archive/refs/heads/main.tar.gz
-            tar xvzf hiddify-central-config-main.tar.gz --strip-components=1
-            rm hiddify-central-config-main.tar.gz
+            tar xvzf main.tar.gz --strip-components=1
+            rm main.tar.gz
             echo $LAST_CONFIG_VERSION > VERSION
             bash install.sh
         fi
