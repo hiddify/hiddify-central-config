@@ -1,6 +1,6 @@
 # HiddifyCentralPanel
 
-
+#Not usable yet visit https://github.com/hiddify/hiddify-config/wiki
 # Installation
 
 SSH to your server and then copy and paste the following command:
